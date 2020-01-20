@@ -1,0 +1,67 @@
+README
+Project members: Swagatalaxmi Aich and Carter Ross
+============================================================================
+
+This package includes the following files:
+
+|-- awget.py [This file contains the functions to execute a call to begin the onion router.]
+
+|-- ss.py [The file that allows awget to jump from peer to peer while relaying and deleting the file.]
+
+|-- README.txt [This file]
+
+
+HOW TO RUN
+=============================================================================
+
+To run awget.py:
+	$: python3 awget.py <URL> <chainlist.txt>
+		Where URL is the URL you are requesting information from, and the chainlist.txt is optional; however, there has to be a file called chaingang.txt.
+		Example URL: http://www.cs.colostate.edu/~cs457/p2.html
+To run ss.py:
+	$: python3 ss.py <Port Number>
+		Where the Port Number is a valid port number, and is also optional. If you decide not to add it, it defaults to 20,000.
+
+
+BUGS
+=============================================================================
+
+If you send a URL with a forward slash at the end of it, it will not grab the correct file.
+
+
+EXAMPLE OUTPUT
+=============================================================================
+
+awget:
+	Request: www.cs.colostate.edu/...
+	chainlist is
+	<SSaddr, SSport>
+	<SSaddr, SSport>
+	<SSaddr, SSport>
+	<SSaddr, SSport>
+	next SS is <SSaddr, SSport>
+	waiting for file...
+	..
+	Received file <filename>
+	Goodbye!
+
+ss <SSaddr, SSport>:
+	Request: www.cs.colostate.edu/...
+	chainlist is
+	<SSaddr, SSport>
+	<SSaddr, SSport>
+	<SSaddr, SSport>
+	next SS is <SSaddr, SSport>
+	waiting for file...
+	..
+	Relaying file ...
+	Goodbye!
+
+ss <SSaddr, SSport>:
+	Request: www.cs.colostate.edu/...
+	chainlist is empty
+	issuing wget for file <filename>
+	..
+	File received
+	Relaying file ...
+	Goodbye!
